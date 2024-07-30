@@ -15,7 +15,20 @@ class PowermailConditions {
 
   initialize = function () {
     const that = this;
-    that.#sendFormValuesToPowermailCond();
+
+    let formUid = this.#form.querySelector('input.powermail_form_uid').value;
+    let formActionSelector = '#form-' + formUid + '-actions';
+
+    if (document.querySelector(formActionSelector) === null) {
+      console.log('Loading conditions via AJAX');
+      that.#sendFormValuesToPowermailCond();
+    } else {
+      console.log('Using prerendered conditions, whoohooo!');
+      let actions = JSON.parse(document.querySelector(formActionSelector).textContent);
+      console.log(actions);
+      that.#processActions(actions);
+    }
+
     that.#fieldListener();
   }
 
