@@ -85,6 +85,14 @@ class PowermailConditions {
         }
       }
     }
+    let fieldsets = this.#form.querySelectorAll('.powermail_fieldset');
+    fieldsets.forEach(function(fieldset) {
+      if (window.getComputedStyle(fieldset).visibility === 'hidden') {
+        console.log('Making initially invisible fieldset visible');
+        fieldset.style.visibility = 'visible';
+        fieldset.style.opacity = 1;
+      }
+    });
   };
 
   #enableAllFields() {

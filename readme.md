@@ -51,6 +51,13 @@ To prevent the flickering that occurs when loading a form with conditions the us
 ```xml
 {namespace pc=In2code\PowermailCond\ViewHelpers}
 <script type="application/json" id="form-{form.uid}-actions">{pc:conditions(form:form) -> f:format.raw()}</script>
+<style type="text/css">
+    .powermail_fieldset {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s, visibility 0.5s;
+    }
+</style>
 ```
 
 This way the initial asynchronous call will be skipped which reduces the flickering to a minimum.
