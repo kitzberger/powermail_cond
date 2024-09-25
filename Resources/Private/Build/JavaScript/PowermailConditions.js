@@ -20,12 +20,11 @@ class PowermailConditions {
     let formActionSelector = '#form-' + formUid + '-actions';
 
     if (document.querySelector(formActionSelector) === null) {
-      console.log('Loading conditions via AJAX');
+      // Loading conditions via AJAX
       that.#sendFormValuesToPowermailCond();
     } else {
-      console.log('Using prerendered conditions, whoohooo!');
+      // Using prerendered conditions
       let actions = JSON.parse(document.querySelector(formActionSelector).textContent);
-      console.log(actions);
       that.#processActions(actions);
     }
 
@@ -88,7 +87,7 @@ class PowermailConditions {
     let fieldsets = this.#form.querySelectorAll('.powermail_fieldset');
     fieldsets.forEach(function(fieldset) {
       if (window.getComputedStyle(fieldset).visibility === 'hidden') {
-        console.log('Making initially invisible fieldset visible');
+        // Making initially invisible fieldset visible
         fieldset.style.visibility = 'visible';
         fieldset.style.opacity = 1;
       }
