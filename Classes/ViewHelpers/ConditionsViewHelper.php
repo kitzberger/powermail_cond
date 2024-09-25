@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace In2code\PowermailCond\ViewHelpers;
 
 use In2code\Powermail\Domain\Model\Form;
-use In2code\PowermailCond\Utility\ConditionUtility;
+use In2code\PowermailCond\Service\ConditionService;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -13,11 +13,11 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class ConditionsViewHelper extends AbstractViewHelper
 {
-    protected ConditionUtility $conditionUtility;
+    protected ConditionService $conditionService;
 
-    public function injectConditionUtility(ConditionUtility $conditionUtility): void
+    public function injectConditionService(ConditionService $conditionService): void
     {
-        $this->conditionUtility = $conditionUtility;
+        $this->conditionService = $conditionService;
     }
 
     public function initializeArguments()
@@ -42,7 +42,7 @@ class ConditionsViewHelper extends AbstractViewHelper
             $params = ['mail' => ['form' => $form->getUid()]];
         }
 
-        $arguments = $this->conditionUtility->getArguments($params);
+        $arguments = $this->conditionService->getArguments($params);
 
         return json_encode($arguments, JSON_THROW_ON_ERROR);
     }

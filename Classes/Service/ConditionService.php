@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace In2code\PowermailCond\Utility;
+namespace In2code\PowermailCond\Service;
 
 use In2code\Powermail\Domain\Repository\FormRepository;
 use In2code\PowermailCond\Domain\Repository\ConditionContainerRepository;
 use In2code\PowermailCond\Exception\MissingPowermailParameterException;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-class ConditionUtility
+class ConditionService
 {
     protected FormRepository $formRepository;
 
